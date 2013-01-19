@@ -1,5 +1,5 @@
 NAME
-    JSON::WebToken - JSON Web Token (JWT) implementation (draft version 00)
+    JSON::WebToken - JSON Web Token (JWT) implementation
 
 SYNOPSIS
       use Test::More;

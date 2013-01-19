@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use 5.008_001;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Exporter 'import';
 
@@ -177,7 +177,7 @@ __END__
 
 =head1 NAME
 
-JSON::WebToken - JSON Web Token (JWT) implementation (draft version 00)
+JSON::WebToken - JSON Web Token (JWT) implementation
 
 =head1 SYNOPSIS
 
