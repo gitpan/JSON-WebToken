@@ -22,8 +22,6 @@ SYNOPSIS
 DESCRIPTION
     JSON::WebToken is JSON Web Token (JWT) implementation for Perl
 
-    SEE ALSO <http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-00>
-
     THIS MODULE IS ALPHA LEVEL INTERFACE.
 
 METHODS
@@ -104,3 +102,5 @@ LICENSE
     under the same terms as Perl itself.
 
 SEE ALSO
+    <http://tools.ietf.org/html/draft-ietf-oauth-json-web-token>
+

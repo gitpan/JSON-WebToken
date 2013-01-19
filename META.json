@@ -48,7 +48,7 @@
    "provides" : {
       "JSON::WebToken" : {
          "file" : "lib/JSON/WebToken.pm",
-         "version" : "0.03"
+         "version" : "0.04"
       },
       "JSON::WebToken::Crypt" : {
          "file" : "lib/JSON/WebToken/Crypt.pm",
@@ -69,5 +69,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.03"
+   "version" : "0.04"
 }
