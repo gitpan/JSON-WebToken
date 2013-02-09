@@ -23,7 +23,7 @@ no_index:
 provides:
   JSON::WebToken:
     file: lib/JSON/WebToken.pm
-    version: 0.04
+    version: 0.05
   JSON::WebToken::Crypt:
     file: lib/JSON/WebToken/Crypt.pm
     version: 0
@@ -43,4 +43,4 @@ requires:
   perl: 5.008001
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.04
+version: 0.05

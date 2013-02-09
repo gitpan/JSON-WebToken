@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use 5.008_001;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use Exporter 'import';
 
@@ -112,6 +112,9 @@ sub decode {
     }
 
     my $algorithm = $header->{alg};
+    croak "Signature must be the empty string when alg is none"
+        if $algorithm eq 'none' and $crypto_segment;
+
     unless ($class->_verify($algorithm, $signature_input, $secret, $signature)) {
         croak "Invalid signature by $signature";
     }
