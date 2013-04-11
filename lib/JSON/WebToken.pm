@@ -4,14 +4,14 @@ use strict;
 use warnings;
 use 5.008_001;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
-use Exporter 'import';
+use parent 'Exporter';
 
 use Carp qw(croak);
-use Class::Load ();
-use JSON::XS qw(encode_json decode_json);
-use MIME::Base64 qw(encode_base64url decode_base64url);
+use JSON qw(encode_json decode_json);
+use MIME::Base64 qw(encode_base64 decode_base64);
+use Module::Runtime qw(use_module);
 
 our @EXPORT = qw(encode_jwt decode_jwt);
 
@@ -68,13 +68,13 @@ sub encode {
     $algorithm = $header->{alg};
     croak 'secret must be specified' if $algorithm ne 'none' && !defined $secret;
 
-    my $header_segment  = encode_base64url encode_json $header;
-    my $claims_segment  = encode_base64url encode_json $claims;
+    my $header_segment  = encode_base64url(encode_json $header);
+    my $claims_segment  = encode_base64url(encode_json $claims);
     my $signature_input = join '.', $header_segment, $claims_segment;
 
     my $signature = $class->_sign($algorithm, $signature_input, $secret);
 
-    return join '.', $signature_input, encode_base64url $signature;
+    return join '.', $signature_input, encode_base64url($signature);
 }
 
 sub encode_jwt {
@@ -97,9 +97,9 @@ sub decode {
 
     my ($header, $claims, $signature);
     eval {
-        $header    = decode_json decode_base64url $header_segment;
-        $claims    = decode_json decode_base64url $claims_segment;
-        $signature = decode_base64url $crypto_segment if $header->{alg} ne 'none' && $is_verify;
+        $header    = decode_json decode_base64url($header_segment);
+        $claims    = decode_json decode_base64url($claims_segment);
+        $signature = decode_base64url($crypto_segment) if $header->{alg} ne 'none' && $is_verify;
     };
     if (my $e = $@) {
         croak 'Invalid segment encoding';
@@ -163,12 +163,36 @@ sub _ensure_class_loaded {
     my $signing_class = $klass =~ s/^\+// ? $klass : "JSON::WebToken::Crypt::$klass";
     return $signing_class if $class_loaded{$signing_class};
 
-    Class::Load::load_class($signing_class);
+    use_module $signing_class unless $class->_is_inner_package($signing_class);
 
     $class_loaded{$signing_class} = 1;
     $alg_to_class{$algorithm}     = $signing_class;
 
     return $signing_class;
+}
+
+sub _is_inner_package {
+    my ($class, $klass) = @_;
+    no strict 'refs';
+    %{ "$klass\::" } ? 1 : 0;
+}
+
+####################################################
+# Taken from newer MIME::Base64
+# In order to support older version of MIME::Base64
+####################################################
+sub encode_base64url {
+    my $e = encode_base64(shift, "");
+    $e =~ s/=+\z//;
+    $e =~ tr[+/][-_];
+    return $e;
+}
+
+sub decode_base64url {
+    my $s = shift;
+    $s =~ tr[-_][+/];
+    $s .= '=' while length($s) % 4;
+    return decode_base64($s);
 }
 
 1;
@@ -185,13 +209,13 @@ JSON::WebToken - JSON Web Token (JWT) implementation
 =head1 SYNOPSIS
 
   use Test::More;
-  use JSON::XS;
+  use JSON;
   use JSON::WebToken;
 
   my $claims = {
       iss => 'joe',
       exp => 1300819380,
-      'http://example.com/is_root' => JSON::XS::true,
+      'http://example.com/is_root' => JSON::true,
   };
   my $secret = 'secret';
 
@@ -216,7 +240,7 @@ This method is encoding JWT from hash reference.
   my $jwt = JSON::WebToken->encode({
       iss => 'joe',
       exp => 1300819380,
-      'http://example.com/is_root' => JSON::XS::true,
+      'http://example.com/is_root' => JSON::true,
   }, 'secret');
   # $jwt = join '.',
   #     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
@@ -231,7 +255,7 @@ Default encryption algorithm is C<< HS256 >>. You can change algorithm as follow
   my $jwt = JSON::WebToken->encode({
       iss => 'joe',
       exp => 1300819380,
-      'http://example.com/is_root' => JSON::XS::true,
+      'http://example.com/is_root' => JSON::true,
   }, $pricate_key_string, 'RS256');
 
   my $claims = JSON::WebToken->decode($jwt, $public_key_string);
@@ -243,7 +267,7 @@ If you want to create a C<< Plaintext JWT >>, should be specify C<< none >> for 
   my $jwt = JSON::WebToken->encode({
       iss => 'joe',
       exp => 1300819380,
-      'http://example.com/is_root' => JSON::XS::true,
+      'http://example.com/is_root' => JSON::true,
   }, '', 'none');
   # $jwt = join '.',
   #     'eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0',

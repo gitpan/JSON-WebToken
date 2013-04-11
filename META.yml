@@ -1,15 +1,17 @@
 ---
 abstract: 'JSON Web Token (JWT) implementation'
 author:
-  - 'xaicron E<lt>xaicron@cpan.orgE<gt>'
+  - 'xaicron <xaicron@cpan.org>'
 build_requires:
   Test::Mock::Guard: 0.07
   Test::More: 0.98
   Test::Requires: 0.06
 configure_requires:
+  CPAN::Meta: 0
+  CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Minilla/v0.0.52, CPAN::Meta::Converter version 2.130870'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,30 +19,37 @@ meta-spec:
 name: JSON-WebToken
 no_index:
   directory:
-    - inc
     - t
     - xt
+    - inc
+    - share
+    - eg
+    - examples
 provides:
   JSON::WebToken:
     file: lib/JSON/WebToken.pm
-    version: 0.05
+    version: 0.06
   JSON::WebToken::Crypt:
     file: lib/JSON/WebToken/Crypt.pm
-    version: 0
   JSON::WebToken::Crypt::HMAC:
     file: lib/JSON/WebToken/Crypt/HMAC.pm
-    version: 0
   JSON::WebToken::Crypt::RSA:
     file: lib/JSON/WebToken/Crypt/RSA.pm
-    version: 0
 requires:
   Carp: 0
-  Class::Load: 0.19
-  Digest::SHA: 5.71
-  Exporter: 5.59
-  JSON::XS: 0
-  MIME::Base64: 3.13
+  Digest::SHA: 0
+  Exporter: 0
+  JSON: 0
+  MIME::Base64: 0
+  Module::Runtime: 0
+  parent: 0
   perl: 5.008001
 resources:
-  license: http://dev.perl.org/licenses/
-version: 0.05
+  bugtracker: https://github.com/xaicron/p5-JSON-WebToken/issues
+  homepage: https://github.com/xaicron/p5-JSON-WebToken
+  repository: git://github.com/xaicron/p5-JSON-WebToken.git
+version: 0.06
+x_contributors:
+  - 'Masaki Sawamura <sawamura.masaki@dena.jp>'
+  - 'Ryo <ritou.06@gmail.com>'
+  - 'xaicron <xaicron@gmail.com>'

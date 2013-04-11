@@ -1,13 +1,11 @@
 {
    "abstract" : "JSON Web Token (JWT) implementation",
    "author" : [
-      "xaicron E<lt>xaicron@cpan.orgE<gt>"
+      "xaicron <xaicron@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
-   "license" : [
-      "perl_5"
-   ],
+   "generated_by" : "Minilla/v0.0.52",
+   "license" : "perl_5",
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
@@ -15,59 +13,81 @@
    "name" : "JSON-WebToken",
    "no_index" : {
       "directory" : [
-         "inc",
          "t",
-         "xt"
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples"
       ]
    },
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "Test::Mock::Guard" : "0.07",
-            "Test::More" : "0.98",
-            "Test::Requires" : "0.06"
-         }
-      },
       "configure" : {
          "requires" : {
+            "CPAN::Meta" : "0",
+            "CPAN::Meta::Prereqs" : "0",
             "Module::Build" : "0.38"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Pod::Wordlist::hanekomu" : "0",
+            "Test::CPAN::Meta" : "0",
+            "Test::MinimumVersion" : "0.10108",
+            "Test::Pod" : "1.41",
+            "Test::Spelling" : "0"
          }
       },
       "runtime" : {
          "requires" : {
             "Carp" : "0",
-            "Class::Load" : "0.19",
-            "Digest::SHA" : "5.71",
-            "Exporter" : "5.59",
-            "JSON::XS" : "0",
-            "MIME::Base64" : "3.13",
+            "Digest::SHA" : "0",
+            "Exporter" : "0",
+            "JSON" : "0",
+            "MIME::Base64" : "0",
+            "Module::Runtime" : "0",
+            "parent" : "0",
             "perl" : "5.008001"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::Mock::Guard" : "0.07",
+            "Test::More" : "0.98",
+            "Test::Requires" : "0.06"
          }
       }
    },
    "provides" : {
       "JSON::WebToken" : {
          "file" : "lib/JSON/WebToken.pm",
-         "version" : "0.05"
+         "version" : "0.06"
       },
       "JSON::WebToken::Crypt" : {
-         "file" : "lib/JSON/WebToken/Crypt.pm",
-         "version" : 0
+         "file" : "lib/JSON/WebToken/Crypt.pm"
       },
       "JSON::WebToken::Crypt::HMAC" : {
-         "file" : "lib/JSON/WebToken/Crypt/HMAC.pm",
-         "version" : 0
+         "file" : "lib/JSON/WebToken/Crypt/HMAC.pm"
       },
       "JSON::WebToken::Crypt::RSA" : {
-         "file" : "lib/JSON/WebToken/Crypt/RSA.pm",
-         "version" : 0
+         "file" : "lib/JSON/WebToken/Crypt/RSA.pm"
       }
    },
    "release_status" : "stable",
    "resources" : {
-      "license" : [
-         "http://dev.perl.org/licenses/"
-      ]
+      "bugtracker" : {
+         "web" : "https://github.com/xaicron/p5-JSON-WebToken/issues"
+      },
+      "homepage" : "https://github.com/xaicron/p5-JSON-WebToken",
+      "repository" : {
+         "url" : "git://github.com/xaicron/p5-JSON-WebToken.git",
+         "web" : "https://github.com/xaicron/p5-JSON-WebToken"
+      }
    },
-   "version" : "0.05"
+   "version" : "0.06",
+   "x_contributors" : [
+      "Masaki Sawamura <sawamura.masaki@dena.jp>",
+      "Ryo <ritou.06@gmail.com>",
+      "xaicron <xaicron@gmail.com>"
+   ]
 }
