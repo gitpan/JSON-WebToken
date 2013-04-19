@@ -11,7 +11,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.0.52, CPAN::Meta::Converter version 2.130870'
+generated_by: 'Minilla/v0.0.53, CPAN::Meta::Converter version 2.130880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -25,10 +25,11 @@ no_index:
     - share
     - eg
     - examples
+    - author
 provides:
   JSON::WebToken:
     file: lib/JSON/WebToken.pm
-    version: 0.06
+    version: 0.07
   JSON::WebToken::Crypt:
     file: lib/JSON/WebToken/Crypt.pm
   JSON::WebToken::Crypt::HMAC:
@@ -48,7 +49,7 @@ resources:
   bugtracker: https://github.com/xaicron/p5-JSON-WebToken/issues
   homepage: https://github.com/xaicron/p5-JSON-WebToken
   repository: git://github.com/xaicron/p5-JSON-WebToken.git
-version: 0.06
+version: 0.07
 x_contributors:
   - 'Masaki Sawamura <sawamura.masaki@dena.jp>'
   - 'Ryo <ritou.06@gmail.com>'
