@@ -23,14 +23,18 @@ my %args = (
         'Module::Build' => 0.38,
     },
 
-    no_index    => { 'directory' => [ 'inc' ] },
-    name        => 'JSON-WebToken',
-    module_name => 'JSON::WebToken',
+    name            => 'JSON-WebToken',
+    module_name     => 'JSON::WebToken',
+    allow_pureperl => 0,
 
     script_files => [glob('script/*'), glob('bin/*')],
+    c_source     => [qw()],
+    PL_files => {},
 
     test_files           => ((-d '.git' || $ENV{RELEASE_TESTING}) && -d 'xt') ? 't/ xt/' : 't/',
     recursive_test_files => 1,
+
+    
 );
 if (-d 'share') {
     $args{share_dir} = 'share';

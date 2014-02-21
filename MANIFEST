@@ -5,9 +5,12 @@ META.json
 README.md
 cpanfile
 lib/JSON/WebToken.pm
+lib/JSON/WebToken/Constants.pm
 lib/JSON/WebToken/Crypt.pm
 lib/JSON/WebToken/Crypt/HMAC.pm
 lib/JSON/WebToken/Crypt/RSA.pm
+lib/JSON/WebToken/Exception.pm
+minil.toml
 t/00_compile.t
 t/01_basic.t
 t/02_rsa.t
@@ -20,13 +23,5 @@ t/spec/draft-ietf-jose-json-web-signature-08-A2.rsa_sha256.t
 t/spec/draft-ietf-oauth-json-web-token-06-3.1.example.t
 tmp/MEMO
 tmp/spec.t
-xt/02_pod.t
-xt/03_pod-coverage.t
-xt/04_perlcritic.t
-xt/05_script-shebang.t
-xt/06_minimum_version.t
-xt/07_cpan_meta.t
-xt/08_meta_author.t
-xt/perlcriticrc
 META.yml
 MANIFEST
