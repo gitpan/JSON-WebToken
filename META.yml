@@ -3,19 +3,17 @@ abstract: 'JSON Web Token (JWT) implementation'
 author:
   - 'xaicron <xaicron@cpan.org>'
 build_requires:
-  Test::Mock::Guard: 0.07
-  Test::More: 0.98
-  Test::Requires: 0.06
+  Test::Mock::Guard: '0.07'
+  Test::More: '0.98'
+  Test::Requires: '0.06'
 configure_requires:
-  CPAN::Meta: 0
-  CPAN::Meta::Prereqs: 0
-  Module::Build: 0.38
+  Module::Build: '0.38'
 dynamic_config: 0
-generated_by: 'Minilla/v0.11.0, CPAN::Meta::Converter version 2.133380'
+generated_by: 'Minilla/v2.3.0, CPAN::Meta::Converter version 2.142060'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: JSON-WebToken
 no_index:
   directory:
@@ -30,7 +28,7 @@ no_index:
 provides:
   JSON::WebToken:
     file: lib/JSON/WebToken.pm
-    version: 0.08
+    version: '0.09'
   JSON::WebToken::Constants:
     file: lib/JSON/WebToken/Constants.pm
   JSON::WebToken::Crypt:
@@ -42,21 +40,22 @@ provides:
   JSON::WebToken::Exception:
     file: lib/JSON/WebToken/Exception.pm
 requires:
-  Carp: 0
-  Digest::SHA: 0
-  Exporter: 0
-  JSON: 0
-  MIME::Base64: 0
-  Module::Runtime: 0
-  parent: 0
-  perl: 5.008001
+  Carp: '0'
+  Digest::SHA: '0'
+  Exporter: '0'
+  JSON: '0'
+  MIME::Base64: '0'
+  Module::Runtime: '0'
+  parent: '0'
+  perl: '5.008001'
 resources:
   bugtracker: https://github.com/xaicron/p5-JSON-WebToken/issues
   homepage: https://github.com/xaicron/p5-JSON-WebToken
   repository: git://github.com/xaicron/p5-JSON-WebToken.git
-version: 0.08
+version: '0.09'
 x_authority: cpan:XAICRON
 x_contributors:
   - 'Masaki Sawamura <sawamura.masaki@dena.jp>'
   - 'Ryo <ritou.06@gmail.com>'
+  - 'yokoe.naosuke <yokoe.naosuke@dena.jp>'
   - 'xaicron <xaicron@gmail.com>'

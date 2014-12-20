@@ -4,7 +4,7 @@
       "xaicron <xaicron@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.11.0",
+   "generated_by" : "Minilla/v2.3.0",
    "license" : [
       "perl_5"
    ],
@@ -28,15 +28,14 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "CPAN::Meta" : "0",
-            "CPAN::Meta::Prereqs" : "0",
             "Module::Build" : "0.38"
          }
       },
       "develop" : {
          "requires" : {
             "Test::CPAN::Meta" : "0",
-            "Test::MinimumVersion" : "0.10108",
+            "Test::MinimumVersion::Fast" : "0.04",
+            "Test::PAUSE::Permissions" : "0.04",
             "Test::Pod" : "1.41",
             "Test::Spellunker" : "v0.2.7"
          }
@@ -64,7 +63,7 @@
    "provides" : {
       "JSON::WebToken" : {
          "file" : "lib/JSON/WebToken.pm",
-         "version" : "0.08"
+         "version" : "0.09"
       },
       "JSON::WebToken::Constants" : {
          "file" : "lib/JSON/WebToken/Constants.pm"
@@ -93,11 +92,12 @@
          "web" : "https://github.com/xaicron/p5-JSON-WebToken"
       }
    },
-   "version" : "0.08",
+   "version" : "0.09",
    "x_authority" : "cpan:XAICRON",
    "x_contributors" : [
       "Masaki Sawamura <sawamura.masaki@dena.jp>",
       "Ryo <ritou.06@gmail.com>",
+      "yokoe.naosuke <yokoe.naosuke@dena.jp>",
       "xaicron <xaicron@gmail.com>"
    ]
 }
